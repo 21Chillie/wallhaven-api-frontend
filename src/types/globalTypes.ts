@@ -1,6 +1,6 @@
-export type Theme = "light" | "dark" | "system";
+export type ThemeType = "system" | "dark" | "light";
 
 export type ThemeContextType = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  theme: ThemeType;
+  setTheme: React.Dispatch<React.SetStateAction<ThemeType>>;
 };
