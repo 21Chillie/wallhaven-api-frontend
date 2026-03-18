@@ -1,4 +1,4 @@
-import type { ThemeContextType, ThemeType } from "../types/globalTypes";
+import type { ThemeContextType, ThemeType } from "../types/themeContext.type";
 import {
   useContext,
   createContext,
