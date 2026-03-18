@@ -15,11 +15,11 @@ export function ThemeToggle() {
 
   return (
     <>
-      <div className="dropdown dropdown-start">
+      <div className="dropdown dropdown-end">
         <div
           tabIndex={0}
           role="button"
-          className="btn btn-square flex items-center text-lg capitalize shadow-md"
+          className="btn btn-square border-base-300 bg-base-100 flex items-center border text-lg capitalize shadow-md"
         >
           <span>
             {themeOptions.map((opt) => theme === opt.value && opt.icon)}
@@ -28,7 +28,7 @@ export function ThemeToggle() {
 
         <ul
           tabIndex={-1}
-          className="dropdown-content bg-base-300 rounded-box z-1 w-32 p-2 shadow-2xl mt-2"
+          className="dropdown-content bg-base-100 rounded-box border-base-300 z-1 mt-2 w-32 border p-2 shadow-md"
         >
           {themeOptions.map((opt) => {
             const { label, value } = opt;
