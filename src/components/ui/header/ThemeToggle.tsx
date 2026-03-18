@@ -1,15 +1,17 @@
+import type { ReactNode } from "react";
 import { UseThemeContext } from "../../../hooks/themeContext";
 import type { ThemeType } from "../../../types/globalTypes";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
-
-const THEME_OPTIONS: { label: string; value: ThemeType }[] = [
-  { label: "System", value: "system" },
-  { label: "Dark", value: "dark" },
-  { label: "Light", value: "light" },
-];
+import { PiMonitorFill } from "react-icons/pi";
 
 export function ThemeToggle() {
   const { theme, setTheme } = UseThemeContext();
+
+  const themeOptions: { label: string; value: ThemeType; icon: ReactNode }[] = [
+    { label: "System", value: "system", icon: <PiMonitorFill></PiMonitorFill> },
+    { label: "Dark", value: "dark", icon: <IoMdMoon></IoMdMoon> },
+    { label: "Light", value: "light", icon: <IoMdSunny></IoMdSunny> },
+  ];
 
   return (
     <>
@@ -17,18 +19,18 @@ export function ThemeToggle() {
         <div
           tabIndex={0}
           role="button"
-          className="btn btn-square text-lg flex items-center capitalize shadow-md"
+          className="btn btn-square flex items-center text-lg capitalize shadow-md"
         >
           <span>
-            {theme === "dark" ? <IoMdMoon></IoMdMoon> : <IoMdSunny></IoMdSunny>}
+            {themeOptions.map((opt) => theme === opt.value && opt.icon)}
           </span>
         </div>
 
         <ul
           tabIndex={-1}
-          className="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl"
+          className="dropdown-content bg-base-300 rounded-box z-1 w-32 p-2 shadow-2xl mt-2"
         >
-          {THEME_OPTIONS.map((opt) => {
+          {themeOptions.map((opt) => {
             const { label, value } = opt;
 
             return (
