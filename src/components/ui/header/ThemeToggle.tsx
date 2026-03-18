@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { UseThemeContext } from "../../../hooks/themeContext";
-import type { ThemeType } from "../../../types/globalTypes";
+import type { ThemeType } from "../../../types/themeContext.type";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { PiMonitorFill } from "react-icons/pi";
 
