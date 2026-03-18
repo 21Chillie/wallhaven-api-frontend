@@ -1,4 +1,4 @@
-import { SearchForm } from "../ui/main/SearchForm";
+import { SearchForm } from "../ui/main/search-form/SearchForm";
 
 export function Main() {
   return (
