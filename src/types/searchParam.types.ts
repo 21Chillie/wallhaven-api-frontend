@@ -8,21 +8,31 @@ export type CategoryOrPurityParamType = {
   value: BitFlagType;
 };
 
+export type SortingOptionType =
+  | "date_added"
+  | "relevance"
+  | "random"
+  | "views"
+  | "favorites"
+  | "toplist";
+
+export type OrderOptionType = "desc" | "asc";
+
+export type RatioKeyType = keyof typeof RESOLUTION_GROUPS;
+
+export type ResolutionValueType =
+  (typeof RESOLUTION_GROUPS)[RatioKeyType][number];
+
 export type SearchParamsType = {
   apiKey?: string;
   q?: string;
-  categories?: BitFlagType;
-  purity?: BitFlagType;
-  sorting?:
-    | "date_added"
-    | "relevance"
-    | "random"
-    | "views"
-    | "favorites"
-    | "toplist";
-  order?: "desc" | "asc";
-  ratios?: keyof typeof RESOLUTION_GROUPS;
-  resolutions?: (typeof RESOLUTION_GROUPS)[keyof typeof RESOLUTION_GROUPS][number];
+  categories?: CategoryOrPurityParamType;
+  purity?: CategoryOrPurityParamType;
+  sorting?: SortingOptionType;
+
+  order?: OrderOptionType;
+  ratios?: RatioKeyType;
+  resolutions?: ResolutionValueType;
   colors?: string;
   page?: number;
 };
