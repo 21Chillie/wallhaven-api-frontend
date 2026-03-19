@@ -9,8 +9,16 @@ export function ThemeToggle() {
 
   const themeOptions: { label: string; value: ThemeType; icon: ReactNode }[] = [
     { label: "System", value: "system", icon: <PiMonitorFill></PiMonitorFill> },
-    { label: "Dark", value: "dark", icon: <IoMdMoon></IoMdMoon> },
-    { label: "Light", value: "light", icon: <IoMdSunny></IoMdSunny> },
+    {
+      label: "Dark",
+      value: "dark",
+      icon: <IoMdMoon></IoMdMoon>,
+    },
+    {
+      label: "Light",
+      value: "light",
+      icon: <IoMdSunny></IoMdSunny>,
+    },
   ];
 
   return (
@@ -19,16 +27,19 @@ export function ThemeToggle() {
         <div
           tabIndex={0}
           role="button"
-          className="btn btn-square border-base-300 bg-base-100 flex items-center border text-lg capitalize shadow-md"
+          className="btn btn-square border-base-content/10 bg-base-100 flex items-center border text-lg capitalize"
         >
           <span>
-            {themeOptions.map((opt) => theme === opt.value && opt.icon)}
+            {themeOptions.map(
+              (opt) =>
+                theme === opt.value && <span key={opt.value}>{opt.icon}</span>,
+            )}
           </span>
         </div>
 
         <ul
           tabIndex={-1}
-          className="dropdown-content bg-base-100 rounded-box border-base-300 z-1 mt-2 w-32 border p-2 shadow-md"
+          className="dropdown-content bg-base-100 rounded-box border-base-content/10 z-1 mt-2 w-32 border p-2 shadow-md"
         >
           {themeOptions.map((opt) => {
             const { label, value } = opt;
@@ -38,7 +49,7 @@ export function ThemeToggle() {
                 <input
                   type="radio"
                   name="theme-dropdown"
-                  className="btn btn-sm btn-block btn-ghost w-full justify-start"
+                  className="btn btn-sm btn-block btn-ghost w-full justify-start font-medium"
                   aria-label={label}
                   value={value}
                   checked={theme === value}
