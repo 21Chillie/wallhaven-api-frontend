@@ -9,7 +9,7 @@ import type {
 } from "../types/searchParam.types";
 
 export function useFilters() {
-  const [params, setParams] = useState<SearchParamsType>({
+  const [params, setParams] = useState<Partial<SearchParamsType>>({
     categories: undefined,
     purity: undefined,
     sorting: undefined,
