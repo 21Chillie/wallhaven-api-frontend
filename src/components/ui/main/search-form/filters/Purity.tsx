@@ -6,7 +6,7 @@ import type {
 } from "../../../../../types/searchParam.types";
 
 type PurityFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changePurityLabel: (label: string, value: BitFlagType) => void;
 };
 

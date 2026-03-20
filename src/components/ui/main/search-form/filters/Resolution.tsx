@@ -10,7 +10,7 @@ export function ResolutionFilter({
   params,
   changeResolutionLabel,
 }: {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeResolutionLabel: (ratios: ResolutionValueType) => void;
 }) {
   const resolutionsByRatio = RESOLUTION_GROUPS[params.ratios as RatioKeyType];

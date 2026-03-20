@@ -9,7 +9,7 @@ export function RatioFilter({
   params,
   changeRatioLabel,
 }: {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeRatioLabel: (ratios: RatioKeyType) => void;
 }) {
   return (

@@ -6,7 +6,7 @@ import type {
 } from "../../../../../types/searchParam.types";
 
 type CategoryFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeCategoryLabel: (label: string, value: BitFlagType) => void;
 };
 

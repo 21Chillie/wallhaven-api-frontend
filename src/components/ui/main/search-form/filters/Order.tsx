@@ -6,7 +6,7 @@ import type {
 } from "../../../../../types/searchParam.types";
 
 type OrderFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeOrderLabel: (order: OrderOptionType) => void;
 };
 

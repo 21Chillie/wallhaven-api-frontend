@@ -7,7 +7,7 @@ import type {
 } from "../../../../../types/searchParam.types";
 
 type SortingFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeSortingLabel: (sorting: SortingOptionType) => void;
 };
 
