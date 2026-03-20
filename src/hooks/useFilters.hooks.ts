@@ -9,17 +9,20 @@ import type {
 } from "../types/searchParam.types";
 
 export function useFilters() {
-  const [params, setParams] = useState<SearchParamsType>({
+  // Initial state of active value for filter parameters in Search Form Component
+  const [params, setParams] = useState<Partial<SearchParamsType>>({
     categories: undefined,
     purity: undefined,
     sorting: undefined,
     order: undefined,
-    ratios: "16x9",
+    ratios: undefined,
     resolutions: undefined,
     colors: undefined,
     page: 1,
   });
 
+  // All function below is to handle value for each parameter
+  // The value will be store in params state for set the label for menu dropdown for filter params in SearchForm component (for better UX)
   const changeCategoryLabel = (label: string, value: BitFlagType) => {
     setParams((prev) => ({ ...prev, categories: { label, value } }));
   };
@@ -43,8 +46,6 @@ export function useFilters() {
   const changeResolutionLabel = (resolutions: ResolutionValueType) => {
     setParams((prev) => ({ ...prev, resolutions }));
   };
-
-  console.log(params);
 
   return {
     params,

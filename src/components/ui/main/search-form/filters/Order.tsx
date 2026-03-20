@@ -6,11 +6,16 @@ import type {
 } from "../../../../../types/searchParam.types";
 
 type OrderFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeOrderLabel: (order: OrderOptionType) => void;
+  onChange: (order: OrderOptionType) => void;
 };
 
-export function OrderFilter({ params, changeOrderLabel }: OrderFilterProps) {
+export function OrderFilter({
+  params,
+  changeOrderLabel,
+  onChange,
+}: OrderFilterProps) {
   return (
     <div className="dropdown">
       <button
@@ -39,7 +44,10 @@ export function OrderFilter({ params, changeOrderLabel }: OrderFilterProps) {
                 value={value}
                 aria-label={value}
                 checked={params.order === value}
-                onChange={() => changeOrderLabel(value)}
+                onChange={() => {
+                  changeOrderLabel(value);
+                  onChange(value);
+                }}
               />
             </li>
           );

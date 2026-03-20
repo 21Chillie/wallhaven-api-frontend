@@ -8,9 +8,11 @@ import type {
 export function RatioFilter({
   params,
   changeRatioLabel,
+  onChange,
 }: {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeRatioLabel: (ratios: RatioKeyType) => void;
+  onChange: (ratios: RatioKeyType) => void;
 }) {
   return (
     <div className="dropdown">
@@ -19,7 +21,7 @@ export function RatioFilter({
         tabIndex={0}
         aria-haspopup="true"
       >
-        <span>{`Ratio: ${params.ratios}`} </span>
+        <span>{params.ratios || "Ratios"}</span>
         <span>
           <IoIosArrowDown></IoIosArrowDown>
         </span>
@@ -40,7 +42,10 @@ export function RatioFilter({
                 value={value}
                 aria-label={value}
                 checked={params.ratios === value}
-                onChange={() => changeRatioLabel(value)}
+                onChange={() => {
+                  changeRatioLabel(value);
+                  onChange(value);
+                }}
               />
             </li>
           );

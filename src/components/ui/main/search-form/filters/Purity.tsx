@@ -3,14 +3,20 @@ import { IoIosArrowDown } from "react-icons/io";
 import type {
   SearchParamsType,
   BitFlagType,
+  CategoryOrPurityParamType,
 } from "../../../../../types/searchParam.types";
 
 type PurityFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changePurityLabel: (label: string, value: BitFlagType) => void;
+  onChange: (purity: CategoryOrPurityParamType) => void;
 };
 
-export function PurityFilter({ params, changePurityLabel }: PurityFilterProps) {
+export function PurityFilter({
+  params,
+  changePurityLabel,
+  onChange,
+}: PurityFilterProps) {
   const { purity } = params;
 
   return (
@@ -43,7 +49,10 @@ export function PurityFilter({ params, changePurityLabel }: PurityFilterProps) {
                 value={value}
                 aria-label={label}
                 checked={purity?.value === value}
-                onChange={() => changePurityLabel(label, value)}
+                onChange={() => {
+                  changePurityLabel(label, value);
+                  onChange({ label, value });
+                }}
               />
             </li>
           );

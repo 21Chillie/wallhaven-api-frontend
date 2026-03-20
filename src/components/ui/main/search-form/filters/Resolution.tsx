@@ -9,9 +9,11 @@ import { RESOLUTION_GROUPS } from "../filterParameterValues";
 export function ResolutionFilter({
   params,
   changeResolutionLabel,
+  onChange,
 }: {
-  params: SearchParamsType;
-  changeResolutionLabel: (ratios: ResolutionValueType) => void;
+  params: Partial<SearchParamsType>;
+  changeResolutionLabel: (resolution: ResolutionValueType) => void;
+  onChange: (resolution: ResolutionValueType) => void;
 }) {
   const resolutionsByRatio = RESOLUTION_GROUPS[params.ratios as RatioKeyType];
 
@@ -32,22 +34,26 @@ export function ResolutionFilter({
         tabIndex={-1}
         className="dropdown-content menu bg-base-100 border-base-content/10 mt-2 w-48 rounded-sm border"
       >
-        {resolutionsByRatio.map((value) => {
-          return (
-            <li key={value}>
-              <input
-                className="btn btn-ghost flex justify-start font-normal"
-                type="radio"
-                name="ratio"
-                id="ratio"
-                value={value}
-                aria-label={value}
-                checked={params.resolutions === value}
-                onChange={() => changeResolutionLabel(value)}
-              />
-            </li>
-          );
-        })}
+        {resolutionsByRatio &&
+          resolutionsByRatio.map((value) => {
+            return (
+              <li key={value}>
+                <input
+                  className="btn btn-ghost flex justify-start font-normal"
+                  type="radio"
+                  name="ratio"
+                  id="ratio"
+                  value={value}
+                  aria-label={value}
+                  checked={params.resolutions === value}
+                  onChange={() => {
+                    changeResolutionLabel(value);
+                    onChange(value);
+                  }}
+                />
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

@@ -3,16 +3,19 @@ import { IoIosArrowDown } from "react-icons/io";
 import type {
   SearchParamsType,
   BitFlagType,
+  CategoryOrPurityParamType,
 } from "../../../../../types/searchParam.types";
 
 type CategoryFilterProps = {
-  params: SearchParamsType;
+  params: Partial<SearchParamsType>;
   changeCategoryLabel: (label: string, value: BitFlagType) => void;
+  onChange: (category: CategoryOrPurityParamType) => void;
 };
 
 export function CategoryFilter({
   params,
   changeCategoryLabel,
+  onChange,
 }: CategoryFilterProps) {
   return (
     <div className="dropdown">
@@ -44,7 +47,10 @@ export function CategoryFilter({
                 value={value}
                 aria-label={label}
                 checked={params?.categories?.value === value}
-                onChange={() => changeCategoryLabel(label, value)}
+                onChange={() => {
+                  changeCategoryLabel(label, value);
+                  onChange({ label, value });
+                }}
               />
             </li>
           );
