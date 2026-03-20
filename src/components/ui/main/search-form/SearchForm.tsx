@@ -29,19 +29,19 @@ export function SearchForm() {
     changeResolutionLabel,
   } = useFilters();
 
+  const searchSchema = z.string().min(1, "Search field cannot be empty!");
+
   const { Field, handleSubmit, Subscribe } = useTanstackForm();
 
-  const searchSchema = z.string().min(1, "Search field cannot be empty!");
+  const handleFormSubmit = (e: React.SubmitEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit();
+  };
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          handleSubmit();
-        }}
-      >
+      <form onSubmit={handleFormSubmit}>
         {/* Search Query */}
         <Field
           name="q"
