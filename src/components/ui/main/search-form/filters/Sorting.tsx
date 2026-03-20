@@ -9,11 +9,13 @@ import type {
 type SortingFilterProps = {
   params: Partial<SearchParamsType>;
   changeSortingLabel: (sorting: SortingOptionType) => void;
+  onChange: (sorting: SortingOptionType) => void;
 };
 
 export function SortingFilter({
   params,
   changeSortingLabel,
+  onChange,
 }: SortingFilterProps) {
   const [label, setLabel] = useState("");
 
@@ -50,6 +52,7 @@ export function SortingFilter({
                 onChange={() => {
                   changeSortingLabel(value);
                   setLabel(label);
+                  onChange(value);
                 }}
               />
             </li>
