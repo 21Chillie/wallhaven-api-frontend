@@ -38,7 +38,7 @@ export function SearchForm() {
 
           <button
             className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-base text-gray-50 transition-colors"
-            type="button"
+            type="submit"
           >
             <IoSearch></IoSearch>
           </button>
@@ -79,7 +79,7 @@ export function SearchForm() {
 
             <div className="divider divider-horizontal mx-1 h-8 self-center"></div>
 
-            <button className="btn btn-primary btn-soft text-sm">
+            <button type="button" className="btn btn-primary btn-soft text-sm">
               Apply filters
             </button>
           </ul>
