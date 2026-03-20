@@ -24,15 +24,15 @@ export type ResolutionValueType =
   (typeof RESOLUTION_GROUPS)[RatioKeyType][number];
 
 export type SearchParamsType = {
-  apiKey?: string;
-  q?: string;
-  categories?: CategoryOrPurityParamType;
-  purity?: CategoryOrPurityParamType;
-  sorting?: SortingOptionType;
+  apiKey: string;
+  q: string;
+  categories: CategoryOrPurityParamType;
+  purity: CategoryOrPurityParamType;
+  sorting: SortingOptionType;
 
-  order?: OrderOptionType;
-  ratios?: RatioKeyType;
-  resolutions?: ResolutionValueType;
-  colors?: string;
-  page?: number;
+  order: OrderOptionType;
+  ratios: RatioKeyType;
+  resolutions: ResolutionValueType;
+  colors: string;
+  page: number;
 };
