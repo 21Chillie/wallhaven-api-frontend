@@ -53,7 +53,7 @@ export function SearchForm() {
             return (
               <>
                 <label
-                  className="input input-lg input-ghost outline-primary/50 focus-within:outline-primary/50 focus-within:border-primary/50 border-base-content/15 w-full pr-1.5 text-base font-medium"
+                  className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/15 w-full pr-1.5 text-base font-medium`}
                   htmlFor={field.name}
                 >
                   <input
@@ -68,7 +68,7 @@ export function SearchForm() {
                   />
 
                   <button
-                    className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-base text-gray-50 transition-colors"
+                    className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-lg text-gray-50 transition-colors"
                     type="submit"
                   >
                     <IoSearch></IoSearch>
@@ -86,7 +86,7 @@ export function SearchForm() {
         ></Field>
 
         {/* Filter Parameters */}
-        <div className="border-base-content/15 mt-12 hidden border-t pt-4 md:block">
+        <div className="border-base-content/10 mt-12 hidden border-t pt-4 md:block">
           <ul className="border-base-content/10 flex flex-wrap gap-2">
             <Field
               name="categories"
