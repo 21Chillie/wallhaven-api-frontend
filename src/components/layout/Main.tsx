@@ -1,3 +1,4 @@
+import { WallpaperResults } from "../ui/main/image-card/WallpaperResults";
 import { SearchForm } from "../ui/main/search-form/SearchForm";
 
 export function Main() {
@@ -6,6 +7,7 @@ export function Main() {
       <main className="flex-1 px-4 py-12">
         <div className="mx-auto max-w-7xl">
           <SearchForm></SearchForm>
+          <WallpaperResults></WallpaperResults>
         </div>
       </main>
     </>
