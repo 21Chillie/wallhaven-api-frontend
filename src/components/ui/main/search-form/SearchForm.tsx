@@ -8,7 +8,6 @@ import {
   RatioFilter,
   ResolutionFilter,
 } from "./filters";
-import useTanstackForm from "../../../../hooks/form.hooks";
 import type {
   CategoryOrPurityParamType,
   OrderOptionType,
@@ -17,6 +16,7 @@ import type {
   SortingOptionType,
 } from "../../../../types/searchParam.types";
 import z from "zod";
+import useSearch from "../../../../hooks/search.hooks";
 
 export function SearchForm() {
   const {
@@ -29,19 +29,20 @@ export function SearchForm() {
     changeResolutionLabel,
   } = useFilters();
 
-  const { Field, handleSubmit, Subscribe } = useTanstackForm();
-
   const searchSchema = z.string().min(1, "Search field cannot be empty!");
+
+  const { form } = useSearch();
+  const { Field, handleSubmit, Subscribe } = form;
+
+  const handleFormSubmit = (e: React.SubmitEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit();
+  };
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          handleSubmit();
-        }}
-      >
+      <form onSubmit={handleFormSubmit}>
         {/* Search Query */}
         <Field
           name="q"
@@ -53,7 +54,7 @@ export function SearchForm() {
             return (
               <>
                 <label
-                  className="input input-lg input-ghost outline-primary/50 focus-within:outline-primary/50 focus-within:border-primary/50 border-base-content/15 w-full pr-1.5 text-base font-medium"
+                  className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20 mb-1" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/15 w-full pr-1.5 text-base font-medium`}
                   htmlFor={field.name}
                 >
                   <input
@@ -61,14 +62,14 @@ export function SearchForm() {
                     type="text"
                     name={field.name}
                     id={field.name}
-                    placeholder="Search high-resolution wallpapers"
+                    placeholder="Search high-resolution wallpapers *"
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
                   />
 
                   <button
-                    className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-base text-gray-50 transition-colors"
+                    className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-lg text-gray-50 transition-colors"
                     type="submit"
                   >
                     <IoSearch></IoSearch>
@@ -76,7 +77,7 @@ export function SearchForm() {
                 </label>
 
                 {errors.length > 0 && (
-                  <span className="text-error text-sm">
+                  <span className="text-error text-sm font-medium">
                     {errors[0]?.message}
                   </span>
                 )}
@@ -86,7 +87,7 @@ export function SearchForm() {
         ></Field>
 
         {/* Filter Parameters */}
-        <div className="border-base-content/15 mt-12 hidden border-t pt-4 md:block">
+        <div className="border-base-content/10 mt-12 hidden border-t pt-4 md:block">
           <ul className="border-base-content/10 flex flex-wrap gap-2">
             <Field
               name="categories"
@@ -191,9 +192,10 @@ export function SearchForm() {
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
                 <button
-                  type="submit"
+                  type="button"
                   disabled={!canSubmit}
                   className="btn btn-primary btn-soft text-sm"
+                  onClick={handleSubmit}
                 >
                   {isSubmitting ? "Applying..." : "Apply filters"}
                 </button>

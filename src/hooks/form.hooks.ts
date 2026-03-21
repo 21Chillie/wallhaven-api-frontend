@@ -1,7 +1,9 @@
 import { useForm } from "@tanstack/react-form";
 import type { SearchParamsType } from "../types/searchParam.types";
 
-function useTanstackForm() {
+function useTanstackForm(
+  setFilters: React.Dispatch<React.SetStateAction<Partial<SearchParamsType>>>,
+) {
   const formDefaultValues: Partial<SearchParamsType> = {
     q: "",
     categories: undefined,
@@ -13,7 +15,7 @@ function useTanstackForm() {
     page: 1,
   };
 
-  const { Field, handleSubmit, Subscribe } = useForm({
+  const form = useForm({
     defaultValues: formDefaultValues,
     onSubmit: async ({ value }) => {
       // Transform the data for the API request
@@ -23,11 +25,11 @@ function useTanstackForm() {
         purity: value.purity?.value,
       };
 
-      console.log(payload);
+      setFilters(payload as Partial<SearchParamsType>);
     },
   });
 
-  return { Field, handleSubmit, Subscribe };
+  return form;
 }
 
 export default useTanstackForm;

@@ -5,6 +5,7 @@ import type {
   BitFlagType,
   CategoryOrPurityParamType,
 } from "../../../../../types/searchParam.types";
+import { API_KEY } from "../../../../../config/axiosInstance.config";
 
 type PurityFilterProps = {
   params: Partial<SearchParamsType>;
@@ -38,6 +39,10 @@ export function PurityFilter({
       >
         {PURITY_OPTIONS.map((opt) => {
           const { label, value } = opt;
+
+          if (!API_KEY && opt.label === "NSFW") {
+            return null;
+          }
 
           return (
             <li key={label}>
