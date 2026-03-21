@@ -8,7 +8,6 @@ import {
   RatioFilter,
   ResolutionFilter,
 } from "./filters";
-import useTanstackForm from "../../../../hooks/form.hooks";
 import type {
   CategoryOrPurityParamType,
   OrderOptionType,
@@ -17,6 +16,7 @@ import type {
   SortingOptionType,
 } from "../../../../types/searchParam.types";
 import z from "zod";
+import useSearch from "../../../../hooks/search.hooks";
 
 export function SearchForm() {
   const {
@@ -31,7 +31,8 @@ export function SearchForm() {
 
   const searchSchema = z.string().min(1, "Search field cannot be empty!");
 
-  const { Field, handleSubmit, Subscribe } = useTanstackForm();
+  const { form } = useSearch();
+  const { Field, handleSubmit, Subscribe } = form;
 
   const handleFormSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ export function SearchForm() {
             return (
               <>
                 <label
-                  className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/15 w-full pr-1.5 text-base font-medium`}
+                  className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20 mb-1" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/15 w-full pr-1.5 text-base font-medium`}
                   htmlFor={field.name}
                 >
                   <input
@@ -61,7 +62,7 @@ export function SearchForm() {
                     type="text"
                     name={field.name}
                     id={field.name}
-                    placeholder="Search high-resolution wallpapers"
+                    placeholder="Search high-resolution wallpapers *"
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
@@ -76,7 +77,7 @@ export function SearchForm() {
                 </label>
 
                 {errors.length > 0 && (
-                  <span className="text-error text-sm">
+                  <span className="text-error text-sm font-medium">
                     {errors[0]?.message}
                   </span>
                 )}
@@ -191,9 +192,10 @@ export function SearchForm() {
               selector={(state) => [state.canSubmit, state.isSubmitting]}
               children={([canSubmit, isSubmitting]) => (
                 <button
-                  type="submit"
+                  type="button"
                   disabled={!canSubmit}
                   className="btn btn-primary btn-soft text-sm"
+                  onClick={handleSubmit}
                 >
                   {isSubmitting ? "Applying..." : "Apply filters"}
                 </button>
