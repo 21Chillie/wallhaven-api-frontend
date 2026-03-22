@@ -15,7 +15,7 @@ function useTanstackForm(
     page: 1,
   };
 
-  const form = useForm({
+  const { handleSubmit, Subscribe, Field } = useForm({
     defaultValues: formDefaultValues,
     onSubmit: async ({ value }) => {
       // Transform the data for the API request
@@ -29,7 +29,7 @@ function useTanstackForm(
     },
   });
 
-  return form;
+  return { handleSubmit, Subscribe, Field };
 }
 
 export default useTanstackForm;
