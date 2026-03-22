@@ -14,7 +14,7 @@ function ButtonScrollTop() {
   return (
     <Activity mode={isVisible ? "visible" : "hidden"}>
       <button
-        className="btn btn-neutral btn-circle fixed right-4 bottom-8 shadow-md animate-bounce"
+        className="btn btn-neutral btn-circle fixed right-4 bottom-6 shadow-md animate-bounce"
         type="button"
         onClick={scrollToTop}
       >
