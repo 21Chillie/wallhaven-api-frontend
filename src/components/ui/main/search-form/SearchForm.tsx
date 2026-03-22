@@ -16,7 +16,7 @@ import type {
   SortingOptionType,
 } from "../../../../types/searchParam.types";
 import z from "zod";
-import useSearch from "../../../../hooks/search.hooks";
+import { UseSearchContext } from "../../../../hooks/searchContext.hooks";
 
 export function SearchForm() {
   const {
@@ -31,7 +31,7 @@ export function SearchForm() {
 
   const searchSchema = z.string().min(1, "Search field cannot be empty!");
 
-  const { form } = useSearch();
+  const { form } = UseSearchContext();
   const { Field, handleSubmit, Subscribe } = form;
 
   const handleFormSubmit = (e: React.SubmitEvent) => {

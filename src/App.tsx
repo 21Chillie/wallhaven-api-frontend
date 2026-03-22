@@ -3,6 +3,7 @@ import { Header } from "./components/layout/Header";
 import { Main } from "./components/layout/Main";
 import { ThemeProvider } from "./hooks/themeContext.hooks";
 import { Toaster } from "react-hot-toast";
+import { SearchProvider } from "./hooks/searchContext.hooks";
 
 function App() {
   const queryClient = new QueryClient();
@@ -16,7 +17,9 @@ function App() {
       </ThemeProvider>
 
       <QueryClientProvider client={queryClient}>
-        <Main></Main>
+        <SearchProvider>
+          <Main></Main>
+        </SearchProvider>
       </QueryClientProvider>
     </>
   );

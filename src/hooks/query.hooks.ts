@@ -3,7 +3,7 @@ import type { SearchParamsType } from "../types/searchParam.types";
 import apiService from "../services/api.service";
 import toast from "react-hot-toast";
 
-function UseTanstackQuery(params: Partial<SearchParamsType>) {
+function useTanstackQuery(params: Partial<SearchParamsType>) {
   const { isPending, data, isError, error } = useQuery({
     queryKey: ["wallpapers", params],
     queryFn: async () => await apiService.search(params),
@@ -18,7 +18,7 @@ function UseTanstackQuery(params: Partial<SearchParamsType>) {
 
   // DEBUG
   // console.log(data ? "query success" : "query failed");
-  return { isPending, data };
+  return { isPending, data, isError, error };
 }
 
-export default UseTanstackQuery;
+export default useTanstackQuery;
