@@ -3,6 +3,7 @@ import { Activity } from "react";
 import WallpaperCard from "./WallpaperCard";
 import WallpaperSkeleton from "./WallpaperSkeleton";
 import ErrorCard from "./ErrorCard";
+import ButtonScrollTop from "./ButtonScrollTop";
 
 export function WallpaperResults() {
   const { query } = UseSearchContext();
@@ -44,6 +45,8 @@ export function WallpaperResults() {
               );
             })}
         </ul>
+
+        <ButtonScrollTop></ButtonScrollTop>
       </section>
     </>
   );
