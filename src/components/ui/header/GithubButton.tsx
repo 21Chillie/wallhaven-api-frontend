@@ -6,12 +6,12 @@ export function GithubButton() {
       <a
         href="https://github.com/21Chillie/unsplash-api-frontend"
         target="_blank"
-        className="btn btn-neutral flex items-center gap-2 px-4 py-2 text-xl"
+        className="btn btn-neutral max-sm:btn-square flex items-center gap-2 px-4 py-2 text-xl"
       >
         <span>
           <IoLogoGithub />
         </span>
-        Github
+        <p className="hidden sm:block">Github</p>
       </a>
     </>
   );

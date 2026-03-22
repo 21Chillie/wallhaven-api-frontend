@@ -30,7 +30,7 @@ export type WallhavenMeta = {
   last_page: number;
   per_page: number;
   total: number;
-  query: string | null | { id: number; tag: string };
+  query: string | null;
   seed: string | null;
 };
 
