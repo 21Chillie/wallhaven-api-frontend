@@ -24,9 +24,10 @@ export function ThemeToggle() {
   return (
     <>
       <div className="dropdown dropdown-end">
-        <div
+        <button
           tabIndex={0}
-          role="button"
+          type="button"
+          aria-label="button toggle theme"
           className="btn btn-square border-base-content/10 bg-base-100 flex items-center border text-lg capitalize"
         >
           <span>
@@ -35,7 +36,7 @@ export function ThemeToggle() {
                 theme === opt.value && <span key={opt.value}>{opt.icon}</span>,
             )}
           </span>
-        </div>
+        </button>
 
         <ul
           tabIndex={-1}
