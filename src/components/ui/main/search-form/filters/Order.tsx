@@ -19,7 +19,7 @@ export function OrderFilter({
   return (
     <div className="dropdown">
       <button
-        className="btn btn-ghost text-base-content/70 hover:text-base-content focus-within:text-base-content border-base-content/15 flex items-center font-medium transition-colors duration-300"
+        className="btn btn-ghost text-base-content/70 hover:text-base-content focus-within:text-base-content border-base-content/10 flex items-center font-medium transition-colors duration-300"
         tabIndex={0}
         aria-haspopup="true"
       >
