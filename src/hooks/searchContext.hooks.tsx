@@ -1,4 +1,11 @@
-import { useContext, createContext, type ReactNode, useState } from "react";
+import {
+  useCallback,
+  useContext,
+  createContext,
+  type ReactNode,
+  useMemo,
+  useState,
+} from "react";
 import useTanstackQuery from "./query.hooks";
 import useTanstackForm from "./form.hooks";
 import type { SearchContextType } from "../types/searchContext.types";
@@ -16,30 +23,40 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const form = useTanstackForm(setFilters);
   const query = useTanstackQuery(filters);
 
-  const toggleModalWallpaper = (id: string) => {
-    if (!query.data) return;
+  const wallpaperDataMap = useMemo(() => {
+    if (!query.data) return new Map<string, WallhavenWallpaper>();
 
     const wallpaperData = query.data.pages.flatMap((page) => page.data);
-    const wallpaperDataMap = new Map(wallpaperData.map((w) => [w.id, w]));
+    return new Map(wallpaperData.map((w) => [w.id, w]));
+  }, [query.data]);
 
-    if (wallpaperDataMap.has(id)) {
-      setModalWallpaper(wallpaperDataMap.get(id));
-    }
-  };
+  const toggleModalWallpaper = useCallback(
+    (id: string) => {
+      if (wallpaperDataMap.has(id)) {
+        setModalWallpaper(wallpaperDataMap.get(id));
+      }
+    },
+    [wallpaperDataMap],
+  );
 
-  const clearModalWallpaper = () => {
+  const clearModalWallpaper = useCallback(() => {
     setModalWallpaper(undefined);
-  };
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      form,
+      query,
+      toggleModalWallpaper,
+      modalWallpaper,
+      clearModalWallpaper,
+    }),
+    [form, query, toggleModalWallpaper, modalWallpaper, clearModalWallpaper],
+  );
 
   return (
     <SearchContext
-      value={{
-        form,
-        query,
-        toggleModalWallpaper,
-        modalWallpaper,
-        clearModalWallpaper,
-      }}
+      value={value}
     >
       {children}
     </SearchContext>

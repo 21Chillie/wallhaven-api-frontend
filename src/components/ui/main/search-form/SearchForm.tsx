@@ -64,6 +64,8 @@ export function SearchForm() {
                       name={field.name}
                       id={field.name}
                       placeholder="Search high-resolution wallpapers *"
+                      autoComplete="off"
+                      aria-label="Search wallpapers"
                       value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
@@ -72,6 +74,7 @@ export function SearchForm() {
                     <button
                       className="bg-primary/90 hover:bg-primary grid place-items-center rounded-sm p-2 text-lg text-gray-50 transition-colors"
                       type="submit"
+                      aria-label="Submit wallpaper search"
                     >
                       <IoSearch></IoSearch>
                     </button>

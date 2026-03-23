@@ -35,9 +35,9 @@ export function WallpaperResults() {
       <section id="wallpaper-result">
         <Activity mode={metaData ? "visible" : "hidden"}>
           <header className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
-            <h1 className="text-3xl leading-relaxed font-bold capitalize md:text-4xl">
+            <h2 className="text-3xl leading-relaxed font-bold capitalize md:text-4xl">
               {metaData?.query}
-            </h1>
+            </h2>
 
             <p className="text-base-content/50 text-sm uppercase md:text-base">
               {`${metaData?.total} wallpapers found for '${metaData?.query}'`}
@@ -47,10 +47,13 @@ export function WallpaperResults() {
 
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {wallpapersData &&
-            wallpapersData.map((w) => {
+            wallpapersData.map((w, index) => {
               return (
                 <li key={w.id}>
-                  <WallpaperCard {...w}></WallpaperCard>
+                  <WallpaperCard
+                    wallpaper={w}
+                    loadingPriority={index < 4 ? "high" : "auto"}
+                  ></WallpaperCard>
                 </li>
               );
             })}

@@ -48,10 +48,11 @@ export function ModalWallpaperCard() {
           {/* Main Image Stage */}
           <figure className="bg-base-100 relative flex justify-center p-2 md:p-6">
             <img
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
               src={path || thumbs.large}
-              alt="Full Resolution View"
+              alt={`Full wallpaper preview at ${resolution}`}
               className="max-h-[75vh] w-auto object-contain shadow-lg"
             />
 
@@ -68,6 +69,8 @@ export function ModalWallpaperCard() {
               <a
                 href={short_url}
                 target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open wallpaper details in a new tab"
                 type="button"
                 className="btn btn-circle btn-sm shadow-sm"
               >
