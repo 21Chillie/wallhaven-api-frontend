@@ -25,7 +25,7 @@ Just like the name of this project, this app is wallpaper discovery application 
 
 ## Overview
 
-This application is a modern interface for the Wallhaven API, built to explore more about **TanStack Form** and **Query**. It features a refined UI/UX with skeleton loading states and an Unsplash-style modal for viewing high-res wallpapers. The app handles complex filtering for categories, resolution, and purity with ease.
+This application is a modern interface for the Wallhaven API, built for learning purpose to explore more about **TanStack Form** and **Query**. It features a refined UI/UX with skeleton loading states and an Unsplash-style modal for viewing high-res wallpapers. The app handles complex filtering for categories, resolution, and purity with ease.
 
 ## Key Features
 
