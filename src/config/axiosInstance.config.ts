@@ -4,13 +4,13 @@ import axios, {
   type InternalAxiosRequestConfig,
 } from "axios";
 
-// const BASE_URL: string = import.meta.env.VITE_API_BASE_URL;
-export const ENV: string = import.meta.env.VITE_BUN_ENV
+const BASE_URL: string = import.meta.env.VITE_API_BASE_URL;
+export const ENV: string = import.meta.env.VITE_BUN_ENV;
 export const API_KEY: string = import.meta.env.VITE_API_KEY;
-export const PROD_BASE_URL: string = import.meta.env.VITE_PROD_BASE_URL
+export const PROD_BASE_URL: string = import.meta.env.VITE_PROD_BASE_URL;
 
 const imageApi = axios.create({
-  baseURL: ENV === "production" ? PROD_BASE_URL: "/api/wallhaven",
+  baseURL: ENV === "production" ? PROD_BASE_URL : BASE_URL,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
