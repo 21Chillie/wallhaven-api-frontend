@@ -1,7 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import type { SearchParamsType } from "../types/searchParam.types";
 import apiService from "../services/api.service";
-import toast from "react-hot-toast";
 import type { WallhavenMeta } from "../types/apiResponse.types";
 
 function useTanstackQuery(params: Partial<SearchParamsType>) {
@@ -35,10 +34,6 @@ function useTanstackQuery(params: Partial<SearchParamsType>) {
     },
     staleTime: 1000 * 60 * 5,
   });
-
-  if (isError) {
-    toast.error(error.message);
-  }
 
   return {
     data,
