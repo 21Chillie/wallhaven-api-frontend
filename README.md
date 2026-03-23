@@ -6,17 +6,17 @@ Just like the name of this project, this app is wallpaper discovery application 
 
 ## Table of Contents
 
-- [Overview](##overview)
+- [Overview](#overview)
     
-- [Key Features](##key-features)
+- [Key Features](#key-features)
     
-- [Tech Stack](##tech-stack)
+- [Tech Stack](#tech-stack)
     
-- [Prerequisites](##prerequisites)
+- [Prerequisites](#prerequisites)
     
-- [Setup and Installation](##setup-and-installation)
+- [Setup and Installation](#setup-and-installation)
     
-- [API Configuration](##api-configuration)
+- [API Configuration](#api-configuration)
     
 - [NSFW and Purity Settings](##nsfw-and-purity-settings)
     
