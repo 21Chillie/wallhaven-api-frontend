@@ -5,7 +5,7 @@ export function Main() {
   return (
     <>
       <main className="flex-1 px-4 py-12">
-        <div className="mx-auto max-w-7xl flex flex-col gap-12">
+        <div className="mx-auto flex max-w-7xl flex-col gap-12">
           <SearchForm></SearchForm>
           <WallpaperResults></WallpaperResults>
         </div>

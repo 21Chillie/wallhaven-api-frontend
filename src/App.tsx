@@ -4,6 +4,7 @@ import { Main } from "./components/layout/Main";
 import { ThemeProvider } from "./hooks/themeContext.hooks";
 import { Toaster } from "react-hot-toast";
 import { SearchProvider } from "./hooks/searchContext.hooks";
+import { ModalWallpaperCard } from "./components/ui/aside/ModalWallpaperCard";
 
 function App() {
   const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <SearchProvider>
           <Main></Main>
+          <ModalWallpaperCard></ModalWallpaperCard>
         </SearchProvider>
       </QueryClientProvider>
     </>
