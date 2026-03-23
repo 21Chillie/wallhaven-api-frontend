@@ -31,7 +31,7 @@ function WallpaperCard(props: WallhavenWallpaper) {
         {/* Meta tag and button */}
         <div className="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-black/90 via-black/20 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100 md:p-6">
           <div className="flex items-center justify-between">
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-0.5 text-white/90">
               <span className="text-sm font-bold tracking-tight">
                 {resolution}
               </span>

@@ -3,6 +3,7 @@ import { Activity } from "react";
 import WallpaperCard from "./WallpaperCard";
 import WallpaperSkeleton from "./WallpaperSkeleton";
 import ErrorCard from "./ErrorCard";
+import ButtonScrollTop from "./ButtonScrollTop";
 
 export function WallpaperResults() {
   const { query } = UseSearchContext();
@@ -34,7 +35,7 @@ export function WallpaperResults() {
           </header>
         </Activity>
 
-        <ul className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 md:gap-6 md:grid-cols-3 lg:grid-cols-4">
           {wallpapersData &&
             wallpapersData.map((w) => {
               return (
@@ -44,6 +45,8 @@ export function WallpaperResults() {
               );
             })}
         </ul>
+
+        <ButtonScrollTop></ButtonScrollTop>
       </section>
     </>
   );

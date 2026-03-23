@@ -6,11 +6,12 @@ import type { SearchParamsType } from "../types/searchParam.types";
 const apiService = {
   search: async (
     searchParams: Partial<SearchParamsType>,
+    pageParam: number = 1,
   ): Promise<WallhavenSearchResponse> => {
     const res: AxiosResponse<WallhavenSearchResponse> = await imageApi.get(
       "/search",
       {
-        params: searchParams,
+        params: { ...searchParams, page: pageParam },
       },
     );
 

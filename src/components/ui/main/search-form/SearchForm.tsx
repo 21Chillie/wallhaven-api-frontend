@@ -55,7 +55,7 @@ export function SearchForm() {
               return (
                 <>
                   <label
-                    className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20 mb-1" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/15 w-full pr-1.5 text-base font-medium`}
+                    className={`${errors.length > 0 ? "focus-within:border-error/50 focus-within:outline-error/20 mb-1" : "focus-within:outline-primary/20 focus-within:border-primary/50"} input input-lg input-ghost border-base-content/10 w-full pr-1.5 text-base font-medium`}
                     htmlFor={field.name}
                   >
                     <input
