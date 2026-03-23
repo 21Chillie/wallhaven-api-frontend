@@ -4,7 +4,7 @@ export function GithubButton() {
   return (
     <>
       <a
-        href="https://github.com/21Chillie/unsplash-api-frontend"
+        href="https://github.com/21Chillie/wallhaven-api-frontend"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Open project repository on GitHub"
