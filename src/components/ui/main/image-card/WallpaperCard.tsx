@@ -1,12 +1,17 @@
+import { UseSearchContext } from "../../../../hooks/searchContext.hooks";
 import type { WallhavenWallpaper } from "../../../../types/apiResponse.types";
 import { FaHeart, FaEye } from "react-icons/fa";
 
 function WallpaperCard(props: WallhavenWallpaper) {
-  const { thumbs, resolution, category, purity, views, favorites } = props;
+  const { id, thumbs, resolution, category, purity, views, favorites } = props;
+  const { toggleModalWallpaper } = UseSearchContext();
 
   return (
     <>
-      <div className="group hover:border-primary/50 border-base-content/10 relative cursor-zoom-in overflow-hidden rounded-md border shadow-md transition-all duration-300">
+      <div
+        className="group hover:border-primary/50 border-base-content/10 relative cursor-zoom-in overflow-hidden rounded-md border shadow-md transition-all duration-300"
+        onClick={() => toggleModalWallpaper(id)}
+      >
         {/* View and favorite count */}
         <div className="absolute -top-1 right-0 left-0 z-10 flex items-center justify-end gap-3 bg-linear-to-b from-black/60 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100">
           <div className="flex items-center gap-1.5 text-white/90">
@@ -25,6 +30,8 @@ function WallpaperCard(props: WallhavenWallpaper) {
             src={thumbs.large || thumbs.original || thumbs.small}
             alt="Wallpaper Preview"
             className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+            loading="lazy"
+            decoding="async"
           />
         </figure>
 
@@ -43,6 +50,7 @@ function WallpaperCard(props: WallhavenWallpaper) {
             <button
               type="button"
               className="btn btn-primary btn-soft items-center gap-2 rounded-full px-4 text-xs font-semibold backdrop-blur-md transition-colors max-sm:hidden"
+              onClick={() => toggleModalWallpaper(id)}
             >
               View
             </button>
