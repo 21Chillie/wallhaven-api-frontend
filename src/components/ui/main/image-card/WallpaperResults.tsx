@@ -7,18 +7,28 @@ import ButtonScrollTop from "./ButtonScrollTop";
 
 export function WallpaperResults() {
   const { query } = UseSearchContext();
-  const { data, error, isError, isFetching } = query;
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isPending,
+    isError,
+    fetchStatus,
+    error,
+  } = query;
 
-  if (isFetching) {
-    return <WallpaperSkeleton></WallpaperSkeleton>;
+  // Initial skeleton card
+  if (isPending && fetchStatus !== "idle") {
+    return <WallpaperSkeleton length={12}></WallpaperSkeleton>;
   }
 
   if (isError) {
     return <ErrorCard error={error}></ErrorCard>;
   }
 
-  const wallpapersData = data?.data;
-  const metaData = data?.meta;
+  const wallpapersData = data?.pages.flatMap((page) => page.data);
+  const metaData = data?.pages[0]?.meta;
 
   return (
     <>
@@ -35,7 +45,7 @@ export function WallpaperResults() {
           </header>
         </Activity>
 
-        <ul className="grid grid-cols-2 gap-3 md:gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
           {wallpapersData &&
             wallpapersData.map((w) => {
               return (
@@ -45,6 +55,28 @@ export function WallpaperResults() {
               );
             })}
         </ul>
+
+        {isFetchingNextPage && (
+          <div className="mt-3 md:mt-6">
+            <WallpaperSkeleton length={8}></WallpaperSkeleton>
+          </div>
+        )}
+
+        {hasNextPage && !isFetchingNextPage && (
+          <div className="mt-4 flex flex-col items-center justify-center gap-12">
+            <p className="text-base-content/50 text-sm font-medium">
+              Showing {wallpapersData?.length} of {metaData?.total} high-quality
+              wallpapers
+            </p>
+
+            <button
+              onClick={() => fetchNextPage()}
+              className="btn btn-primary w-fit px-8"
+            >
+              Load More
+            </button>
+          </div>
+        )}
 
         <ButtonScrollTop></ButtonScrollTop>
       </section>
