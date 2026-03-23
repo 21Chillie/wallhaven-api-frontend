@@ -2,8 +2,26 @@ import { UseSearchContext } from "../../../../hooks/searchContext.hooks";
 import type { WallhavenWallpaper } from "../../../../types/apiResponse.types";
 import { FaHeart, FaEye } from "react-icons/fa";
 
-function WallpaperCard(props: WallhavenWallpaper) {
-  const { id, thumbs, resolution, category, purity, views, favorites } = props;
+type WallpaperCardProps = {
+  wallpaper: WallhavenWallpaper;
+  loadingPriority?: "high" | "auto";
+};
+
+function WallpaperCard({
+  wallpaper,
+  loadingPriority = "auto",
+}: WallpaperCardProps) {
+  const {
+    id,
+    thumbs,
+    resolution,
+    category,
+    purity,
+    views,
+    favorites,
+    dimension_x,
+    dimension_y,
+  } = wallpaper;
   const { toggleModalWallpaper } = UseSearchContext();
 
   return (
@@ -28,9 +46,14 @@ function WallpaperCard(props: WallhavenWallpaper) {
         <figure className="aspect-3/4">
           <img
             src={thumbs.large || thumbs.original || thumbs.small}
-            alt="Wallpaper Preview"
+            srcSet={`${thumbs.large} 1280w, ${thumbs.original} 780w, ${thumbs.small} 300w`}
+            sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 22vw"
+            width={dimension_x}
+            height={dimension_y}
+            alt={`${category} ${purity} wallpaper preview (${resolution})`}
             className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
             loading="lazy"
+            fetchPriority={loadingPriority}
             decoding="async"
           />
         </figure>
@@ -50,7 +73,10 @@ function WallpaperCard(props: WallhavenWallpaper) {
             <button
               type="button"
               className="btn btn-primary btn-soft items-center gap-2 rounded-full px-4 text-xs font-semibold backdrop-blur-md transition-colors max-sm:hidden"
-              onClick={() => toggleModalWallpaper(id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleModalWallpaper(id);
+              }}
             >
               View
             </button>
