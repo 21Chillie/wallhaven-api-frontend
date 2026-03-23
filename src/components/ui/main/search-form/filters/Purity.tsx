@@ -41,7 +41,34 @@ export function PurityFilter({
           const { label, value } = opt;
 
           if (!API_KEY && opt.label === "NSFW") {
-            return null;
+            return (
+              <div
+                className="tooltip tooltip-right hidden md:block"
+                key={value}
+              >
+                <div className="tooltip-content">
+                  <p className="text-base-content/90 text-left text-sm text-pretty">
+                    This option is disabled, you have to provide API key in
+                    order to enable it.
+                  </p>
+                </div>
+
+                <input
+                  className="btn btn-ghost flex justify-start font-normal"
+                  type="radio"
+                  name="purity"
+                  id="purity"
+                  disabled
+                  value={value}
+                  aria-label={label}
+                  checked={purity?.value === value}
+                  onChange={() => {
+                    changePurityLabel(label, value);
+                    onChange({ label, value });
+                  }}
+                />
+              </div>
+            );
           }
 
           return (
