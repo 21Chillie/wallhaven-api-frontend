@@ -3,11 +3,7 @@ import axios, {
   type AxiosResponse,
   type InternalAxiosRequestConfig,
 } from "axios";
-
-const BASE_URL: string = import.meta.env.VITE_API_BASE_URL;
-export const ENV: string = import.meta.env.VITE_BUN_ENV;
-export const API_KEY: string = import.meta.env.VITE_API_KEY;
-export const PROD_BASE_URL: string = import.meta.env.VITE_PROD_BASE_URL;
+import { ENV, PROD_BASE_URL, BASE_URL, API_KEY } from "../utils/importEnv";
 
 const imageApi = axios.create({
   baseURL: ENV === "production" ? PROD_BASE_URL : BASE_URL,
