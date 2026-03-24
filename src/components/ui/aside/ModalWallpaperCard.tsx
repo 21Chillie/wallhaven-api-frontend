@@ -20,7 +20,7 @@ export function ModalWallpaperCard() {
 
   return (
     <>
-      <aside className="bg-base-300/60 fixed inset-0 z-10 grid place-items-center p-4 backdrop-blur-md transition-opacity">
+      <aside className="bg-base-300/60 fixed inset-0 z-20 grid place-items-center p-4 backdrop-blur-md transition-opacity">
         <div className="bg-base-300 mx-auto max-w-3xl rounded-lg">
           {/* Top Bar: Actions */}
           <div className="flex justify-between gap-2 p-4">
@@ -34,6 +34,30 @@ export function ModalWallpaperCard() {
               </span>
               Go back
             </button>
+
+            <div className="tooltip tooltip-left">
+              <div className="tooltip-content">
+                <p className="text-[10px] md:text-sm text-base-content/60">
+                  Wallpaper provided by{" "}
+                  <span className="text-base-content underline">
+                    {source || "wallhaven.cc"}
+                  </span>
+                </p>
+              </div>
+
+              <a
+                href={short_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open wallpaper details in a new tab"
+                type="button"
+                className="btn btn-circle btn-sm shadow-sm"
+              >
+                <span>
+                  <FaInfo></FaInfo>
+                </span>
+              </a>
+            </div>
 
             <Activity mode="hidden">
               <button
@@ -55,30 +79,6 @@ export function ModalWallpaperCard() {
               alt={`Full wallpaper preview at ${resolution}`}
               className="max-h-[75vh] w-auto object-contain shadow-lg"
             />
-
-            <div className="tooltip tooltip-left absolute top-8 right-8">
-              <div className="tooltip-content">
-                <p className="text-base-content/60">
-                  Wallpaper provided by{" "}
-                  <span className="text-base-content underline">
-                    {source || "wallhaven.cc"}
-                  </span>
-                </p>
-              </div>
-
-              <a
-                href={short_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open wallpaper details in a new tab"
-                type="button"
-                className="btn btn-circle btn-sm shadow-sm"
-              >
-                <span>
-                  <FaInfo></FaInfo>
-                </span>
-              </a>
-            </div>
           </figure>
 
           {/* Bottom Bar: Stats */}
