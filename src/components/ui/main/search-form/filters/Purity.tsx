@@ -5,7 +5,7 @@ import type {
   BitFlagType,
   CategoryOrPurityParamType,
 } from "../../../../../types/searchParam.types";
-import { API_KEY } from "../../../../../config/axiosInstance.config";
+import { API_KEY } from "../../../../../utils/importEnv";
 
 type PurityFilterProps = {
   params: Partial<SearchParamsType>;
