@@ -17,7 +17,7 @@ const imageApi = axios.create({
 
 imageApi.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    if (API_KEY) {
+    if (API_KEY && ENV === "development") {
       config.headers["X-API-KEY"] = API_KEY;
     }
 
