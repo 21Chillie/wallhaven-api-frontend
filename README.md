@@ -63,8 +63,8 @@ This application is a modern interface for the Wallhaven API, built for learning
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/yourusername/wallhaven-search.git
-    cd wallhaven-search
+    git clone https://github.com/21Chillie/wallhaven-api-frontend.git
+    cd wallhaven-api-frontend
     ```
     
 2. **Install dependencies:**
@@ -80,8 +80,10 @@ This application is a modern interface for the Wallhaven API, built for learning
     Code snippet
     
     ```bash
-	VITE_API_KEY=your_api_key
-	VITE_API_BASE_URL=base_url
+    VITE_BUN_ENV=development # or production
+    VITE_PROD_BASE_URL=/api
+    VITE_API_KEY=your_api_key
+    VITE_API_BASE_URL=/api/wallhaven
     ```
     
 4. **Run the development server:**
