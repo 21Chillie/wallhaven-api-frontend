@@ -1,6 +1,7 @@
 import { Activity } from "react";
 import { UseSearchContext } from "../../../hooks/searchContext.hooks";
 import { FaArrowLeft, FaInfo } from "react-icons/fa";
+import { getProxyImageUrl } from "../../../utils/proxyImage";
 
 export function ModalWallpaperCard() {
   const { clearModalWallpaper, modalWallpaper } = UseSearchContext();
@@ -75,7 +76,7 @@ export function ModalWallpaperCard() {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              src={path || thumbs.large}
+              src={getProxyImageUrl(path || thumbs.large)}
               alt={`Full wallpaper preview at ${resolution}`}
               className="max-h-[75vh] w-auto object-contain shadow-lg"
             />

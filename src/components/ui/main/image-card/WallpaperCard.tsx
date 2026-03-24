@@ -1,6 +1,7 @@
 import { UseSearchContext } from "../../../../hooks/searchContext.hooks";
 import type { WallhavenWallpaper } from "../../../../types/apiResponse.types";
 import { FaHeart, FaEye } from "react-icons/fa";
+import { getProxyImageUrl } from "../../../../utils/proxyImage";
 
 type WallpaperCardProps = {
   wallpaper: WallhavenWallpaper;
@@ -45,7 +46,9 @@ function WallpaperCard({
         {/* image */}
         <figure className="aspect-3/4">
           <img
-            src={thumbs.large || thumbs.original || thumbs.small}
+            src={getProxyImageUrl(
+              thumbs.large || thumbs.original || thumbs.small,
+            )}
             srcSet={`${thumbs.large} 1280w, ${thumbs.original} 780w, ${thumbs.small} 300w`}
             sizes="(max-width: 768px) 45vw, (max-width: 1024px) 30vw, 22vw"
             width={dimension_x}
