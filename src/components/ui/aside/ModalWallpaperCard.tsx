@@ -1,4 +1,4 @@
-import { Activity } from "react";
+import { Activity, useEffect } from "react";
 import { UseSearchContext } from "../../../hooks/searchContext.hooks";
 import { FaArrowLeft, FaInfo } from "react-icons/fa";
 import { getProxyImageUrl } from "../../../utils/proxyImage";
@@ -6,23 +6,31 @@ import { getProxyImageUrl } from "../../../utils/proxyImage";
 export function ModalWallpaperCard() {
   const { clearModalWallpaper, modalWallpaper } = UseSearchContext();
 
+  // Disable scrolling when modal is open
+  useEffect(() => {
+    if (modalWallpaper) {
+      // Disable scrolling
+      document.body.style.overflow = "hidden";
+    } else {
+      // Re-enable scrolling
+      document.body.style.overflow = "unset";
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalWallpaper]);
+
   if (!modalWallpaper) return null;
 
-  const {
-    short_url,
-    views,
-    favorites,
-    source,
-    resolution,
-    file_type,
-    path,
-    thumbs,
-  } = modalWallpaper;
+  const { short_url, views, favorites, resolution, file_type, path, thumbs } =
+    modalWallpaper;
 
   return (
     <>
       <aside className="bg-base-300/60 fixed inset-0 z-20 grid place-items-center p-4 backdrop-blur-md transition-opacity">
-        <div className="bg-base-300 mx-auto max-w-3xl rounded-lg">
+        <div className="bg-base-300 z-40 mx-auto max-w-3xl rounded-lg">
           {/* Top Bar: Actions */}
           <div className="flex justify-between gap-2 p-4">
             <button
@@ -37,11 +45,11 @@ export function ModalWallpaperCard() {
             </button>
 
             <div className="tooltip tooltip-left">
-              <div className="tooltip-content">
-                <p className="text-[10px] md:text-sm text-base-content/60">
+              <div className="tooltip-content bg-base-100 shadow-sm">
+                <p className="text-base-content/50 text-[10px] md:text-sm">
                   Wallpaper provided by{" "}
                   <span className="text-base-content underline">
-                    {source || "wallhaven.cc"}
+                    wallhaven.cc
                   </span>
                 </p>
               </div>
@@ -78,7 +86,7 @@ export function ModalWallpaperCard() {
               decoding="async"
               src={getProxyImageUrl(path || thumbs.large)}
               alt={`Full wallpaper preview at ${resolution}`}
-              className="max-h-[75vh] w-auto object-contain shadow-lg"
+              className="max-h-[50vh] w-auto object-contain shadow-lg md:max-h-[65vh]"
             />
           </figure>
 
