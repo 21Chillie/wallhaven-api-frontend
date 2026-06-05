@@ -7,9 +7,11 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between py-4 max-xl:px-4">
         {/* Navbar Brand */}
         <div className="space-y-1">
-          <h3 className="text-3xl font-bold tracking-tight uppercase">
-            Wallpapers
-          </h3>
+          <a href="/">
+            <h3 className="text-3xl font-bold tracking-tight uppercase">
+              Wallpapers
+            </h3>
+          </a>
           <p className="text-base-content/70 text-sm leading-relaxed md:text-base">
             Find high-resolution wallpapers
           </p>
