@@ -13,4 +13,27 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  server: {
+    proxy: {
+      "/api/wallhaven/full": {
+        target: "https://w.wallhaven.cc/full",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/wallhaven\/full/, ""),
+        headers: {
+          Referer: "https://wallhaven.cc/",
+        },
+      },
+      "/api/wallhaven": {
+        target: "https://wallhaven.cc/api/v1",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/wallhaven/, ""),
+      },
+      "/api/th": {
+        target: "https://th.wallhaven.cc",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/th/, ""),
+      },
+    },
+    allowedHosts: true,
+  },
 });
