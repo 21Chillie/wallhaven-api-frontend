@@ -1,4 +1,4 @@
-import SearchField from "@components/form-filter/SearchField";
+import SearchField from "@components/SearchField";
 import { fieldContext, formContext } from "@hooks/useFormContext";
 import { createFormHook } from "@tanstack/react-form";
 import type { SearchParams } from "~/types/global.type";
