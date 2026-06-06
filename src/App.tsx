@@ -1,4 +1,5 @@
 import ButtonScrollTop from "@components/BtnScrollTop";
+import ModalWallpaperCard from "@components/ModalWallpaperCard";
 import Navbar from "@components/ui/Navbar";
 import SearchFilter from "@components/ui/SearchFilter";
 import WallpaperResult from "@components/ui/WallpaperResult";
@@ -20,6 +21,8 @@ function App() {
       </main>
 
       <ButtonScrollTop />
+
+      <ModalWallpaperCard />
     </div>
   );
 }
