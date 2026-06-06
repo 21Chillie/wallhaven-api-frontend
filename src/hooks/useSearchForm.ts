@@ -1,6 +1,9 @@
+import ButtonSubmit from "@components/ButtonForm";
+import FilterField from "@components/FilterField";
 import SearchField from "@components/SearchField";
 import { fieldContext, formContext } from "@hooks/useFormContext";
 import { createFormHook } from "@tanstack/react-form";
+import { setParams } from "@store/useSearchParamsStore";
 import type { SearchParams } from "~/types/global.type";
 
 const { useAppForm } = createFormHook({
@@ -8,8 +11,11 @@ const { useAppForm } = createFormHook({
   formContext,
   fieldComponents: {
     SearchField,
+    FilterField,
   },
-  formComponents: {},
+  formComponents: {
+    ButtonSubmit,
+  },
 });
 
 const defaultValues: Partial<SearchParams> = {
@@ -34,6 +40,7 @@ export function useSearchForm() {
         if (value) params.set(key, String(value));
       });
 
+      setParams(value);
       window.history.pushState(null, "", `/search?${params.toString()}`);
     },
   });
