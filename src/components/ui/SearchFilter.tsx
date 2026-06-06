@@ -7,8 +7,8 @@ import {
   SORTING_OPTIONS,
 } from "@components/filterParamsValue";
 import { useSearchForm } from "@hooks/useSearchForm";
+import { clearParams } from "@store/useSearchParamsStore";
 import { Activity } from "react";
-import { clearParams } from "~/store/useSearchParamsStore";
 
 export default function SearchFilter() {
   const form = useSearchForm();
@@ -23,19 +23,12 @@ export default function SearchFilter() {
   return (
     <section
       id="search-form"
-      className="bg-base-100 border-base-300 mx-auto my-8 max-w-6xl border p-6 shadow-sm max-xl:mx-4">
+      className="bg-base-100 border-base-300 mx-auto my-4 max-w-6xl border p-4 shadow-sm max-xl:mx-4 md:my-6 md:p-6">
       <form
         onSubmit={handleSubmit}
         className="space-y-4">
         {/* Search */}
-        <form.AppField
-          name="q"
-          validators={{
-            onSubmit: ({ value }) =>
-              !value ? "Search field cannot be empty!" : undefined,
-            onChange: ({ value }) =>
-              !value ? "Search field cannot be empty!" : undefined,
-          }}>
+        <form.AppField name="q">
           {(field) => <field.SearchField />}
         </form.AppField>
 
