@@ -1,7 +1,8 @@
+import { useSearchParamsStore } from "~/store/useSearchParamsStore";
+
 export default function WallpaperResult() {
-  const params = new URLSearchParams(window.location.search);
-  const values = Object.fromEntries(params.entries());
-  console.log(values);
+  const params = useSearchParamsStore((s) => s.params);
+  console.log(params);
 
   return <div></div>;
 }
