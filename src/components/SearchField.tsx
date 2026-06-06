@@ -1,9 +1,8 @@
 import { useFieldContext } from "@hooks/useFormContext";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 export default function SearchField() {
   const { name, state, handleBlur, handleChange } = useFieldContext<string>();
-
   const searchError = state.meta.errors[0];
 
   return (
@@ -23,9 +22,18 @@ export default function SearchField() {
           aria-label="Search wallpapers"
         />
 
+        {state.value && (
+          <button
+            onClick={() => handleChange("")}
+            type="button"
+            className="btn btn-sm btn-ghost btn-circle">
+            <X className="size-4" />
+          </button>
+        )}
+
         <button
           type="submit"
-          className="bg-accent hover:bg-accent/80 text-accent-content grid place-items-center rounded-sm p-2 transition-colors"
+          className="btn btn-square bg-accent hover:bg-accent/80 text-accent-content rounded-sm p-2 transition-colors"
           aria-label="Submit wallpaper search">
           <Search className="size-5" />
         </button>
