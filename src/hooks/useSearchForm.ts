@@ -2,8 +2,8 @@ import ButtonSubmit from "@components/ButtonForm";
 import FilterField from "@components/FilterField";
 import SearchField from "@components/SearchField";
 import { fieldContext, formContext } from "@hooks/useFormContext";
-import { createFormHook } from "@tanstack/react-form";
 import { setParams } from "@store/useSearchParamsStore";
+import { createFormHook } from "@tanstack/react-form";
 import type { SearchParams } from "~/types/global.type";
 
 const { useAppForm } = createFormHook({
@@ -37,6 +37,7 @@ export function useSearchForm() {
       const params = new URLSearchParams();
 
       Object.entries(value).forEach(([key, value]) => {
+        if (key === "page") return;
         if (value) params.set(key, String(value));
       });
 
