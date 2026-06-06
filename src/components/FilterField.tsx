@@ -64,7 +64,26 @@ export default function FilterField({
             !import.meta.env.VITE_API_KEY &&
             param.value === "001"
           ) {
-            return null;
+            return (
+              <li key={param.label}>
+                <div
+                  className="tooltip tooltip-bottom text-sm"
+                  data-tip="No API key provided">
+                  <input
+                    className={`btn btn-sm flex justify-start font-medium capitalize ${state.value === param.value ? "btn-accent" : "btn-ghost"}`}
+                    type="radio"
+                    name={name}
+                    id={`${name}-${param.value}`}
+                    value={param.value}
+                    aria-label={param.label}
+                    disabled={true}
+                    onChange={() => {
+                      handleChange(param.value);
+                    }}
+                  />
+                </div>
+              </li>
+            );
           }
 
           return (
