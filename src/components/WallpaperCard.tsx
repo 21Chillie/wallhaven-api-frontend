@@ -1,6 +1,7 @@
-import { Eye, Heart, Maximize2 } from "lucide-react";
-import type { WallhavenWallpaper } from "~/types/apiResponse.type";
 import { getProxyImageUrl } from "@utils/proxyImage";
+import { Eye, Heart, Maximize2 } from "lucide-react";
+import { setModalData } from "@store/useModalWallpaperStore";
+import type { WallhavenWallpaper } from "~/types/apiResponse.type";
 
 export default function WallpaperCard({
   wallpaper,
@@ -25,6 +26,7 @@ export default function WallpaperCard({
     <article className="group border-base-300 bg-base-100 hover:border-accent/60 relative break-inside-avoid overflow-hidden rounded-md border shadow-sm transition-all duration-300 hover:shadow-lg">
       <button
         type="button"
+        onClick={() => setModalData(wallpaper)}
         className="block w-full cursor-zoom-in! text-left"
         aria-label={`View ${category} ${purity} wallpaper in ${resolution}`}>
         <figure className="bg-base-300 aspect-3/4 overflow-hidden">
