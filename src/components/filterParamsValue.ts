@@ -50,7 +50,7 @@ export const RATIO_OPTIONS: { label: string; value: RatioType }[] = (
 });
 
 export const RESOLUTION_OPTIONS = (
-  ratio: RatioType | null
+  ratio?: RatioType
 ): { label: string; value: ResolutionType }[] => {
   if (!ratio) {
     return [];
