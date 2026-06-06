@@ -13,7 +13,7 @@ export default function ButtonSubmit({
     <form.Subscribe selector={(state) => [state.isSubmitting, state.canSubmit]}>
       {([isSubmitting, canSubmit]) => (
         <button
-          className={`btn ${btnSmall ? "btn-sm" : ""} btn-soft btn-accent`}
+          className={`btn ${btnSmall ? "btn-sm" : ""} btn-soft`}
           type="submit"
           disabled={isSubmitting || !canSubmit}>
           {isSubmitting ? "Applying..." : actionName}
