@@ -24,3 +24,4 @@ dist
 dist-ssr
 *.local
 examples
+.infisical.json
