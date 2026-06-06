@@ -1,4 +1,4 @@
-import type { RESOLUTION_GROUPS } from "@components/form-filter/filterParamsValue";
+import type { RESOLUTION_GROUPS } from "@components/filterParamsValue";
 
 // Type for theme
 export type Theme = "system" | "light" | "dark";
@@ -17,7 +17,7 @@ export type CategoryOptions = {
 };
 
 export type PurityOptions = {
-  label: "all" | "sfw" | "sketchy" | "nsfw";
+  label: "all" | "SFW" | "sketchy" | "NSFW";
   value: BitFlag;
 };
 
