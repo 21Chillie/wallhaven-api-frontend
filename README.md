@@ -77,7 +77,7 @@ This application is a modern interface for the Wallhaven API, built for learning
 
 ## API Configuration
 
-To get an API key, log in to your account at [wallhaven.cc](https://wallhaven.cc) and navigate to your **Account Settings > API**.
+To get an API key, log in to your account at [wallhaven.cc](https://wallhaven.cc) and navigate to your **Profile > Settings > Account**.
 
 ## NSFW and Purity Settings
 
