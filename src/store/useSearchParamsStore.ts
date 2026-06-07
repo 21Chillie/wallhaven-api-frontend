@@ -7,10 +7,22 @@ export type SearchParamsStore = {
   apiKey: string;
 };
 
+const paramsInitialState: SearchParamsStore["params"] = {
+  q: "",
+  categories: "111",
+  purity: "100",
+  sorting: "relevance",
+  order: "desc",
+  ratios: undefined,
+  resolutions: undefined,
+  colors: undefined,
+  page: 1,
+};
+
 export const useSearchParamsStore = create<SearchParamsStore>()(
   persist(
     () => ({
-      params: {},
+      params: paramsInitialState,
       apiKey: "",
     }),
     { name: "search-params-store" }
@@ -27,7 +39,7 @@ export function setParams(newParams: Partial<SearchParams>) {
 }
 
 export function clearParams() {
-  useSearchParamsStore.setState(() => ({ params: {} }));
+  useSearchParamsStore.setState(() => ({ params: paramsInitialState }));
 }
 
 export function setApiKey(key: string) {
@@ -35,5 +47,8 @@ export function setApiKey(key: string) {
 }
 
 export function clearApiKey() {
-  useSearchParamsStore.setState(() => ({ apiKey: "" }));
+  useSearchParamsStore.setState(() => ({
+    params: paramsInitialState,
+    apiKey: "",
+  }));
 }
