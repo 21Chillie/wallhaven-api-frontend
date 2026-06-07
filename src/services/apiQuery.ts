@@ -19,7 +19,7 @@ export async function apiService(
 
 export function apiQueryOptions(params: Partial<SearchParams>, key?: string) {
   return infiniteQueryOptions({
-    queryKey: ["wallpapers", params],
+    queryKey: ["wallpapers", params, key],
     queryFn: ({ pageParam }) => apiService({ ...params, page: pageParam }, key),
     initialPageParam: 1,
     // enabled: params.q ? params.q.length > 0 : false,
