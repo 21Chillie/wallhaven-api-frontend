@@ -1,12 +1,8 @@
-const ENV: string = import.meta.env.VITE_BUN_ENV;
-const BASE_URL: string = import.meta.env.VITE_API_BASE_URL;
-const PROD_BASE_URL: string = import.meta.env.VITE_PROD_BASE_URL;
-
 export const getProxyImageUrl = (url: string): string => {
   if (!url) return "";
 
   // Base prefix based on environment
-  const prefix = ENV === "production" ? PROD_BASE_URL : BASE_URL;
+  const prefix = "/api/wallhaven";
 
   // Full images: https://w.wallhaven.cc/full/... -> /api/wallhaven/full/...
   if (url.includes("w.wallhaven.cc/full")) {

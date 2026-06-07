@@ -44,7 +44,7 @@ This application is a modern interface for the Wallhaven API, built for learning
     
 - **Language:** TypeScript
     
-- **State Management:** TanStack Form (Form handling), TanStack Query (Server state)
+- **State Management:** TanStack Form (Form handling), Zustand (Global state management), TanStack Query (Server state)
     
 - **Styling:** Tailwind CSS + DaisyUI
     
@@ -53,11 +53,6 @@ This application is a modern interface for the Wallhaven API, built for learning
 
 - Latest **Bun** (or **Node.js** if you prefer)
     
-- **Package Manager:** npm
-    
-- **Wallhaven API Key:** OPTIONAL for full accessing (NSFW content) and if you want to run this app locally.
-    
-
 ## Setup and Installation
 
 1. **Clone the repository:**
@@ -72,21 +67,8 @@ This application is a modern interface for the Wallhaven API, built for learning
     ```bash
     bun install
     ```
-    
-3. **Environment Setup:**
-    
-    Create a `.env` file in the root directory:
-    
-    Code snippet
-    
-    ```bash
-    VITE_BUN_ENV=development # or production
-    VITE_PROD_BASE_URL=/api
-    VITE_API_KEY=your_api_key
-    VITE_API_BASE_URL=/api/wallhaven
-    ```
-    
-4. **Run the development server:**
+        
+3. **Run the development server:**
     
     ```bash
     bun run dev
@@ -95,7 +77,7 @@ This application is a modern interface for the Wallhaven API, built for learning
 
 ## API Configuration
 
-To get an API key, log in to your account at [wallhaven.cc](https://wallhaven.cc) and navigate to your **Account Settings > API**.
+To get an API key, log in to your account at [wallhaven.cc](https://wallhaven.cc) and navigate to your **Profile > Settings > Account**.
 
 ## NSFW and Purity Settings
 
@@ -108,4 +90,4 @@ The application supports three levels of content purity:
 3. **NSFW (Not Safe For Work):** Explicit content.
     
 
-> **Important:** To view **NSFW** content, you **must** provide a valid API key in your `.env` file. Without an API key, the Wallhaven API will strictly filter out all NSFW results even if the parameter is sent in the request.
+> **Important:** To view **NSFW** content, you **must** provide a valid API key. Without an API key, the Wallhaven API will strictly filter out all NSFW results even if the parameter is sent in the request.

@@ -1,37 +1,31 @@
+import ButtonScrollTop from "@components/BtnScrollTop";
+import { APIKeyModal } from "@components/ModalApiKey";
+import ModalWallpaperCard from "@components/ModalWallpaperCard";
+import Navbar from "@components/ui/Navbar";
+import SearchFilter from "@components/ui/SearchFilter";
+import WallpaperResult from "@components/ui/WallpaperResult";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { lazy, Suspense } from "react";
-import { Header } from "./components/layout/Header";
-import { Main } from "./components/layout/Main";
-import { ThemeProvider } from "./hooks/themeContext.hooks";
-import { Toaster } from "react-hot-toast";
-import { SearchProvider } from "./hooks/searchContext.hooks";
-
-const ModalWallpaperCard = lazy(() =>
-  import("./components/ui/aside/ModalWallpaperCard").then((module) => ({
-    default: module.ModalWallpaperCard,
-  })),
-);
-
-const queryClient = new QueryClient();
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <>
-      <Toaster></Toaster>
+    <div className="bg-base-200 min-h-screen w-screen flex-col">
+      <Navbar />
 
-      <ThemeProvider>
-        <Header></Header>
-      </ThemeProvider>
+      <main className="relative flex-1 pb-4">
+        <SearchFilter />
 
-      <QueryClientProvider client={queryClient}>
-        <SearchProvider>
-          <Main></Main>
-          <Suspense fallback={null}>
-            <ModalWallpaperCard></ModalWallpaperCard>
-          </Suspense>
-        </SearchProvider>
-      </QueryClientProvider>
-    </>
+        <QueryClientProvider client={queryClient}>
+          <WallpaperResult />
+        </QueryClientProvider>
+
+        <ButtonScrollTop />
+      </main>
+
+      <ModalWallpaperCard />
+      <APIKeyModal />
+    </div>
   );
 }
 

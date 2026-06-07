@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ES2023",
-    "useDefineForClassFields": true,
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
 
@@ -17,12 +16,21 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+
+    /* Path */
+    "paths": {
+      "~/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@store/*": ["./src/store/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@config/*": ["./src/config/*"],
+      "@services/*": ["./src/services/*"],
+      "@utils/*": ["./src/utils/*"],
+    },
   },
-  "include": ["src"]
+  "include": ["src"],
 }
