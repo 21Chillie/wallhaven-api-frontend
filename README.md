@@ -1,75 +1,93 @@
-# React + TypeScript + Vite
+# Wallhaven Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Just like the name of this project, this app is wallpaper discovery application built with **React**, **TypeScript**, and **TanStack**. This project replicates the professional browsing experience of platforms like Wallhaven and Unsplash. Featuring infinite scrolling, metadata overlays, and a search system with filters.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Table of Contents
 
-## React Compiler
+- [Overview](#overview)
+    
+- [Key Features](#key-features)
+    
+- [Tech Stack](#tech-stack)
+    
+- [Prerequisites](#prerequisites)
+    
+- [Setup and Installation](#setup-and-installation)
+    
+- [API Configuration](#api-configuration)
+    
+- [NSFW and Purity Settings](##nsfw-and-purity-settings)
+    
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## Overview
 
-## Expanding the ESLint configuration
+This application is a modern interface for the Wallhaven API, built for learning purpose to explore more about **TanStack Form** and **Query**. It features a refined UI/UX with skeleton loading states and an Unsplash-style modal for viewing high-res wallpapers. The app handles complex filtering for categories, resolution, and purity with ease.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Key Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Infinite Scroll:** Automatic loading of subsequent pages using `useInfiniteQuery`.
+    
+- **Skeleton States:** Zero layout shift during data fetching.
+    
+- **Responsive Image Cards:** Hover-triggered metadata (views, favorites, resolution) that adapts for touch devices.
+    
+- **Advanced Search:** Integrated filtering for categories (General, Anime, People) and sorting.
+    
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Framework:** React 19+ (Vite)
+    
+- **Language:** TypeScript
+    
+- **State Management:** TanStack Form (Form handling), Zustand (Global state management), TanStack Query (Server state)
+    
+- **Styling:** Tailwind CSS + DaisyUI
+    
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Prerequisites
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Latest **Bun** (or **Node.js** if you prefer)
+    
+## Setup and Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/21Chillie/wallhaven-api-frontend.git
+    cd wallhaven-api-frontend
+    ```
+    
+2. **Install dependencies:**
+        
+    ```bash
+    bun install
+    ```
+        
+3. **Run the development server:**
+    
+    ```bash
+    bun run dev
+    ```
+    
+
+## API Configuration
+
+To get an API key, log in to your account at [wallhaven.cc](https://wallhaven.cc) and navigate to your **Account Settings > API**.
+
+## NSFW and Purity Settings
+
+The application supports three levels of content purity:
+
+1. **SFW (Safe For Work):** Default.
+    
+2. **Sketchy:** Borderline content.
+    
+3. **NSFW (Not Safe For Work):** Explicit content.
+    
+
+> **Important:** To view **NSFW** content, you **must** provide a valid API key. Without an API key, the Wallhaven API will strictly filter out all NSFW results even if the parameter is sent in the request.
