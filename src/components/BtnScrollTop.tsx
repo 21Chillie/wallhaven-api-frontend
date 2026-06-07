@@ -13,7 +13,7 @@ export default function ButtonScrollTop() {
   return (
     <Activity mode={isVisible ? "visible" : "hidden"}>
       <button
-        className="btn btn-neutral text-neutral-content btn-circle fixed right-4 bottom-6 z-10 animate-bounce shadow-md"
+        className="btn btn-neutral text-neutral-content btn-circle lg:right-6 fixed right-2 bottom-6 z-10 animate-bounce shadow-md"
         type="button"
         onClick={scrollToTop}>
         <span className="text-xl">
