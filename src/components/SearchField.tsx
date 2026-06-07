@@ -8,7 +8,7 @@ export default function SearchField() {
   return (
     <fieldset className="fieldset">
       <label
-        className={`focus-within:outline-accent/40 focus-within:border-accent/60"} input input-lg input-ghost border-base-content/10 w-full pr-1.5 text-sm font-medium`}>
+        className={`focus-within:outline-accent/40 focus-within:border-accent/60 input input-lg input-ghost border-base-content/10 w-full pr-1.5 text-sm font-medium`}>
         <input
           className="grow"
           type="search"
