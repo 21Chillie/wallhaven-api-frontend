@@ -27,18 +27,14 @@ export default function BtnToggleTheme() {
 
   return (
     <div className="dropdown dropdown-end">
-      <div
-        className="tooltip tooltip-bottom"
-        data-tip="Theme">
-        <button
-          tabIndex={0}
-          type="button"
-          className="btn btn-square group">
-          <span className="text-base-content/80 group-hover:text-base-content transition-colors">
-            {activeTheme?.icon}
-          </span>
-        </button>
-      </div>
+      <button
+        tabIndex={0}
+        type="button"
+        className="btn btn-square group">
+        <span className="text-base-content/80 group-hover:text-base-content transition-colors">
+          {activeTheme?.icon}
+        </span>
+      </button>
 
       <ul
         tabIndex={-1}
