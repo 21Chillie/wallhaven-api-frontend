@@ -2,14 +2,16 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { SearchParams } from "~/types/global.type";
 
-type SearchParamsStore = {
+export type SearchParamsStore = {
   params: Partial<SearchParams>;
+  apiKey: string;
 };
 
 export const useSearchParamsStore = create<SearchParamsStore>()(
   persist(
     () => ({
       params: {},
+      apiKey: "",
     }),
     { name: "search-params-store" }
   )
@@ -26,4 +28,12 @@ export function setParams(newParams: Partial<SearchParams>) {
 
 export function clearParams() {
   useSearchParamsStore.setState(() => ({ params: {} }));
+}
+
+export function setApiKey(key: string) {
+  useSearchParamsStore.setState(() => ({ apiKey: key }));
+}
+
+export function clearApiKey() {
+  useSearchParamsStore.setState(() => ({ apiKey: "" }));
 }
