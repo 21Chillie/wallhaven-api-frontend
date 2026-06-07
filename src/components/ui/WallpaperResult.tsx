@@ -5,9 +5,15 @@ import { useSearchParamsStore } from "@store/useSearchParamsStore";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Activity, useEffect, useRef } from "react";
 import toast from "react-hot-toast";
+import { useShallow } from "zustand/shallow";
 
 export default function WallpaperResult() {
-  const params = useSearchParamsStore((s) => s.params);
+  const { params, key } = useSearchParamsStore(
+    useShallow((s) => ({
+      params: s.params,
+      key: s.apiKey,
+    }))
+  );
   const {
     data,
     isPending,
@@ -16,7 +22,7 @@ export default function WallpaperResult() {
     isFetchingNextPage,
     hasNextPage,
     fetchNextPage,
-  } = useInfiniteQuery(apiQueryOptions(params));
+  } = useInfiniteQuery(apiQueryOptions(params, key));
 
   // Handling load more wallpapers
   // The behaviour like infinite scrolls
