@@ -1,6 +1,7 @@
 import { useFieldContext } from "@hooks/useFormContext";
 import { ChevronDown } from "lucide-react";
 import { Activity } from "react";
+import { useSearchParamsStore } from "~/store/useSearchParamsStore";
 
 type FilterParams = { label: string; value: string };
 
@@ -15,6 +16,7 @@ export default function FilterField({
   const currentLabel = filterParams.find(
     (param) => param.value === state.value
   );
+  const key = useSearchParamsStore((s) => s.apiKey);
 
   return (
     <div className="dropdown">
@@ -59,11 +61,7 @@ export default function FilterField({
         {filterParams.map((param) => {
           // Check if API key is not provided and Purity filter param value is "001" (NSFW)
           // If api is not provided then hide NSFW filter option
-          if (
-            type === "Purity" &&
-            !import.meta.env.VITE_API_KEY &&
-            param.value === "001"
-          ) {
+          if (type === "Purity" && !key && param.value === "001") {
             return (
               <li key={param.label}>
                 <div
@@ -89,7 +87,7 @@ export default function FilterField({
           return (
             <li key={param.label}>
               <input
-                className={`btn btn-sm flex justify-start font-medium capitalize ${state.value === param.value ? "btn-accent" : "btn-ghost"}`}
+                className={`btn btn-sm btn-ghost flex justify-start font-medium capitalize ${param.value !== state.value ? "text-base-content" : "btn-accent"}`}
                 type="radio"
                 name={name}
                 id={`${name}-${param.value}`}
@@ -98,6 +96,7 @@ export default function FilterField({
                 onChange={() => {
                   handleChange(param.value);
                 }}
+                checked={state.value === param.value}
               />
             </li>
           );
