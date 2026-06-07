@@ -18,13 +18,13 @@ export function APIKeyModal() {
       "modal-api-key"
     ) as HTMLDialogElement | null;
 
-    if (apiKey) {
+    if (apiKey && apiKey === key) {
       clearApiKey();
       clearParams();
       setKey("");
       modalSelect?.close();
       toast.success("API key cleared successfully");
-    } else {
+    } else if (!key || apiKey !== key) {
       if (!key) {
         toast.error("You do not provide an API key");
         return;
@@ -92,10 +92,10 @@ export function APIKeyModal() {
               type="button"
               className="btn btn-square"
               onClick={handleSetKey}>
-              {apiKey ? (
-                <X className="text-error size-4" />
-              ) : (
+              {!key || apiKey !== key ? (
                 <Check className="text-success size-4" />
+              ) : (
+                <X className="text-error size-4" />
               )}
             </button>
           </div>
