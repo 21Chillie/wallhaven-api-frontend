@@ -21,7 +21,7 @@ const { useAppForm } = createFormHook({
 const defaultValues: Partial<SearchParams> = {
   q: "",
   categories: "111",
-  purity: "111",
+  purity: "100",
   sorting: "relevance",
   order: "desc",
   ratios: undefined,
