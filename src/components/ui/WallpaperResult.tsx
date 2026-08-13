@@ -40,7 +40,7 @@ export default function WallpaperResult() {
           fetchNextPage();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "150px" }
     );
 
     observer.observe(sentinelRef.current);
